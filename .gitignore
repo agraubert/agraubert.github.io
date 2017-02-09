@@ -1,3 +1,4 @@
 /build/npm-debug.log
 /build/node_modules/
 main.map
+/build/src/index.html
