@@ -21,7 +21,7 @@ import { HomeComponent } from './pages/home/home';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: false })
+    RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [
   ],

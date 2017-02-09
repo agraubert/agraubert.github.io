@@ -45937,7 +45937,7 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
                 http_1.HttpModule,
-                router_1.RouterModule.forRoot(app_routes_1.rootRouterConfig, { useHash: false })
+                router_1.RouterModule.forRoot(app_routes_1.rootRouterConfig, { useHash: true })
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
