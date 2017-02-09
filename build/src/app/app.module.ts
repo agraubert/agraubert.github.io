@@ -8,9 +8,12 @@ import { HttpModule } from '@angular/http';
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
+import { HomeComponent } from './pages/home/home';
+
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent
 
   ],
   imports: [
@@ -18,7 +21,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: true })
+    RouterModule.forRoot(rootRouterConfig, { useHash: false })
   ],
   providers: [
   ],
