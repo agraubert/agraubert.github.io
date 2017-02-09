@@ -5,5 +5,5 @@ import {Component} from '@angular/core';
   templateUrl: './home.html',
 })
 export class HomeComponent {
-  blerg = [1,2,3];
+  blerg = [1,2,3,4];
 }

@@ -43838,7 +43838,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = __webpack_require__(0);
 var HomeComponent = (function () {
     function HomeComponent() {
-        this.blerg = [1, 2, 3];
+        this.blerg = [1, 2, 3, 4];
     }
     HomeComponent = __decorate([
         core_1.Component({
