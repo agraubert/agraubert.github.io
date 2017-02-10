@@ -61843,13 +61843,13 @@ process.umask = function() { return 0; };
 /* 648 */
 /***/ function(module, exports) {
 
-module.exports = "<h3>\r\n  Central component template\r\n</h3>\r\n<div>\r\n  <nav>\r\n  \t<a [routerLink]=\"['/']\">\r\n      Home\r\n    </a>\r\n  </nav>\r\n</div>\r\n\r\n<main>\r\n\t<router-outlet>\r\n\r\n  </router-outlet>\r\n</main>\r\n\r\n\r\n<footer>\r\n</footer>\r\n"
+module.exports = "<h3>\n  Central component template\n</h3>\n<div>\n  <nav>\n  \t<a [routerLink]=\"['/']\">\n      Home\n    </a>\n  </nav>\n</div>\n\n<main>\n\t<router-outlet>\n\n  </router-outlet>\n</main>\n\n\n<footer>\n</footer>\n"
 
 /***/ },
 /* 649 */
 /***/ function(module, exports) {
 
-module.exports = "<h3>Heyo</h3>\r\n<strong>Testing</strong>\r\n<ul>\r\n  <li *ngFor=\"let item of blerg\">{{item}}</li>\r\n</ul>\r\n"
+module.exports = "<h3>Heyo</h3>\n<strong>Testing</strong>\n<ul>\n  <li *ngFor=\"let item of blerg\">{{item}}</li>\n</ul>\n"
 
 /***/ },
 /* 650 */
