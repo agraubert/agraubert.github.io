@@ -14,18 +14,25 @@
 </header>
 
 <main>
-	<router-outlet (activate)="loading = false" (deactivate)="loading = true">
+	<router-outlet>
     <div class="center-align" *ngIf="loading">
       <div class="progress">
         <div class="indeterminate"></div>
       </div>
+      Loading...
     </div>
   </router-outlet>
 </main>
 
 
 <footer>
-  <div class="page-footer light-blue darken-4">
-    Hey again
+  <div class="page-footer light-blue darken-4 white-text">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center-align">
+          @agraubert -- Aaron Graubert
+        </div>
+      </div>
+    </div>
   </div>
 </footer>

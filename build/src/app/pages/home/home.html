@@ -1,8 +1,17 @@
-<h3>Heyo</h3>
-<div>
-  I'm rebuilding my site using Angular2, an amazing framework for dynamically
-  generated content
+<div class="row">
+  <div class="col s11 offset-s1">
+    <h3>Heyo!</h3>
+  </div>
 </div>
-<ul>
-  <li *ngFor="let item of blerg">{{item}}</li>
-</ul>
+<div class="row">
+  <div class="col s11 offset-s1">
+    I'm finally getting around to rebuilding my site after only a year of putting it off <br>
+    I've migrated to GitHub pages for hosting, since it's free and I wasn't using my old AWS hosting enough to justify the cost <br>
+    I'm using Angular2 as a framework for this site, but I'm still learning, so progress will likely be pretty slow
+  </div>
+</div>
+<div class="row" *ngFor="let item of blerg">
+  <div class="col s6 offset-s1">
+    {{item}}
+  </div>
+</div>
