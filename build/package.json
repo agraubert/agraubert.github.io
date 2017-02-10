@@ -6,7 +6,7 @@
     "build": "webpack --progress",
     "watch": "npm run build -- --watch",
     "server": "webpack-dev-server --inline --progress --port 8080 --content-base src",
-    "prestart": "cp ../index.html src/index.html",
+    "prestart": "copy ../index.html src/index.html",
     "start": "npm run server"
   },
   "contributors": [

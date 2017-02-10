@@ -2,3 +2,7 @@
 /build/node_modules/
 main.map
 /build/src/index.html
+build/*.cmd
+build/tsc
+build/tsserver
+build/webpack-dev-server
