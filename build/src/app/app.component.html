@@ -1,13 +1,17 @@
-
-<nav>
-  <div class='nav-wrapper light-blue darken-4'>
-    <ul class="left hide-on-med-and-down">
-      <li [routerLinkActive]="['active']">
-        <a [routerLink]="['/']" class="waves-effect waves-light">Home</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<header>
+  <nav>
+    <div class='nav-wrapper light-blue darken-4'>
+      <ul class="left hide-on-med-and-down">
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['/home']" class="waves-effect waves-light">Home</a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['/about']" class="waves-effect waves-light">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
 <main>
 	<router-outlet (activate)="loading = false" (deactivate)="loading = true">
@@ -21,4 +25,7 @@
 
 
 <footer>
+  <div class="page-footer light-blue darken-4">
+    Hey again
+  </div>
 </footer>

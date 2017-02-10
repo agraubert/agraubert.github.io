@@ -9,11 +9,13 @@ import { HttpModule } from '@angular/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { HomeComponent } from './pages/home/home';
+import { AboutComponent } from './pages/about/about';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent
 
   ],
   imports: [
