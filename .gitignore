@@ -6,3 +6,4 @@ build/*.cmd
 build/tsc
 build/tsserver
 build/webpack-dev-server
+build/typings/
