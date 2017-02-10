@@ -1,17 +1,21 @@
-<h3>
-  Central component template
-</h3>
-<div>
-  <nav>
-  	<a [routerLink]="['/']">
-      Home
-    </a>
-  </nav>
-</div>
+
+<nav>
+  <div class='nav-wrapper light-blue darken-4'>
+    <ul class="left hide-on-med-and-down">
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/']" class="waves-effect waves-light">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <main>
-	<router-outlet>
-
+	<router-outlet (activate)="loading = false" (deactivate)="loading = true">
+    <div class="center-align" *ngIf="loading">
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
   </router-outlet>
 </main>
 

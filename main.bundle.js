@@ -58634,14 +58634,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
+// import {Router} from '@angular/router';
 // import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 var AppComponent = (function () {
     function AppComponent() {
+        // router: Router;
+        this.loading = true;
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
-            // providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
             template: __webpack_require__(648),
         }), 
         __metadata('design:paramtypes', [])
@@ -61843,13 +61845,13 @@ process.umask = function() { return 0; };
 /* 648 */
 /***/ function(module, exports) {
 
-module.exports = "<h3>\n  Central component template\n</h3>\n<div>\n  <nav>\n  \t<a [routerLink]=\"['/']\">\n      Home\n    </a>\n  </nav>\n</div>\n\n<main>\n\t<router-outlet>\n\n  </router-outlet>\n</main>\n\n\n<footer>\n</footer>\n"
+module.exports = "\n<nav>\n  <div class='nav-wrapper light-blue darken-4'>\n    <ul class=\"left hide-on-med-and-down\">\n      <li [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/']\" class=\"waves-effect waves-light\">Home</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<main>\n\t<router-outlet (activate)=\"loading = false\" (deactivate)=\"loading = true\">\n    <div class=\"center-align\" *ngIf=\"loading\">\n      <div class=\"progress\">\n        <div class=\"indeterminate\"></div>\n      </div>\n    </div>\n  </router-outlet>\n</main>\n\n\n<footer>\n</footer>\n"
 
 /***/ },
 /* 649 */
 /***/ function(module, exports) {
 
-module.exports = "<h3>Heyo</h3>\n<strong>Testing</strong>\n<ul>\n  <li *ngFor=\"let item of blerg\">{{item}}</li>\n</ul>\n"
+module.exports = "<h3>Heyo</h3>\n<div>\n  I'll be rebuilding my site using Angular2, an amazing framework for dynamically\n  generated content\n</div>\n<ul>\n  <li *ngFor=\"let item of blerg\">{{item}}</li>\n</ul>\n"
 
 /***/ },
 /* 650 */

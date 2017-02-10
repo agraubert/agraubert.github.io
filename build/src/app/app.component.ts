@@ -1,12 +1,15 @@
 import {Component} from '@angular/core';
+// import {Router} from '@angular/router';
 // import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @Component({
   selector: 'app',
-  // providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  // location: Location;
-  // constructor(location: Location) { this.location = location; }
+  // router: Router;
+  loading: boolean = true;
+  // constructor(router: Router) {
+  //   this.router = router;
+  // }
 }

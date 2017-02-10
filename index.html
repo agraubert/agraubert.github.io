@@ -7,11 +7,29 @@
     <meta http-equiv="expires" content="0" />
     <title>JRS Test</title>
     <base href="/">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   </head>
-  <body>
-    <app>
-      Loading...
-    </app>
+  <body class='blue-grey darken-2'>
+    <div class="container light-blue lighten-5">
+      <app>
+        <div class="center-align">
+          <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js" charset="utf-8"></script>
     <script async src="/main.bundle.js"></script>
   </body>
 </html>
