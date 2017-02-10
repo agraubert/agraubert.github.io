@@ -61849,7 +61849,7 @@ module.exports = "<h3>\r\n  Central component template\r\n</h3>\r\n<div>\r\n  <n
 /* 649 */
 /***/ function(module, exports) {
 
-module.exports = "<h3>Heyo</h3>\r\n<ul>\r\n  <li *ngFor=\"let item of blerg\">{{item}}</li>\r\n</ul>\r\n"
+module.exports = "<h3>Heyo</h3>\r\n<strong>Testing</strong>\r\n<ul>\r\n  <li *ngFor=\"let item of blerg\">{{item}}</li>\r\n</ul>\r\n"
 
 /***/ },
 /* 650 */
