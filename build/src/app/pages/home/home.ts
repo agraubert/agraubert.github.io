@@ -16,6 +16,6 @@ export class HomeComponent {
 
   ngOnInit() {
     this.gh.getRepos()
-      .subscribe((repos) => this.blerg = _.chain(repos).sortBy('updated_at').reverse().value());
+      .subscribe((repos) => this.blerg = _.chain(repos).sortBy('pushed_at').reverse().value());
   }
 }
