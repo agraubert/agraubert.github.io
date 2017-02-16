@@ -11,6 +11,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HomeComponent } from './pages/home/home';
 import { AboutComponent } from './pages/about/about';
 
+import { GithubService } from './services/github';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,7 @@ import { AboutComponent } from './pages/about/about';
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [
+    GithubService
   ],
   bootstrap: [ AppComponent ]
 })
