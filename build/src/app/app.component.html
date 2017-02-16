@@ -9,6 +9,23 @@
           <a [routerLink]="['/about']" class="waves-effect waves-light">About</a>
         </li>
       </ul>
+      <div class="hide-on-large">
+        <ul id="slide-out" class="side-nav">
+          <li>
+            <div class="userView">
+              <a><h3>Menu</h3></a>
+            </div>
+          </li>
+          <li><div class="divider"></div></li>
+          <li [routerLinkActive]="['active']">
+            <a [routerLink]="['/home']" class="waves-effect waves-light">Home</a>
+          </li>
+          <li [routerLinkActive]="['active']">
+            <a [routerLink]="['/about']" class="waves-effect waves-light">About</a>
+          </li>
+        </ul>
+        <a data-activates="slide-out" class="button-collapse"><i class="material-icons">view_week</i></a>
+      </div>
     </div>
   </nav>
 </header>

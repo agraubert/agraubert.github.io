@@ -7,6 +7,7 @@ import {
   NavigationCancel,
   NavigationError
 } from '@angular/router';
+declare var $:any;
 
 @Component({
   selector: 'app',
@@ -27,6 +28,9 @@ export class AppComponent {
     }
     if (event instanceof NavigationEnd) {
       this.loading = false;
+      $(".button-collapse").sideNav({
+        closeOnClick: true
+      });
     }
     if (event instanceof NavigationCancel) {
       this.loading = false;
