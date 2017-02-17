@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {GithubService} from '../../services/github';
 import * as _ from 'lodash';
+declare var timeago:any;
 
 @Component({
   selector: 'home',
@@ -8,8 +9,10 @@ import * as _ from 'lodash';
 })
 export class HomeComponent {
   blerg: any[];
+  timeago: any;
 
   constructor(public gh: GithubService) {
+    this.timeago = timeago;
 
   }
 
