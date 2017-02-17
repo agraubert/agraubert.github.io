@@ -7,6 +7,7 @@ import {
   NavigationCancel,
   NavigationError
 } from '@angular/router';
+import {GithubService} from './services/github';
 declare var $:any;
 
 @Component({
@@ -15,11 +16,13 @@ declare var $:any;
 })
 export class AppComponent {
   loading: boolean = true;
+  link: string = '';
 
-  constructor(router: Router) {
+  constructor(private gh: GithubService, router: Router) {
     router.events.subscribe((event: RouterEvent) => {
       this.intercept(event);
-    })
+    });
+    gh.getUrls().subscribe((response) => this.link = response.user_url.replace("{user}", 'agraubert'));
   }
 
   intercept(event: RouterEvent) {

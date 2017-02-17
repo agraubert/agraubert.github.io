@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {GithubService} from '../../services/github';
-import {Observable} from 'rxjs/Observable';
 import * as _ from 'lodash';
 
 @Component({

@@ -21,7 +21,10 @@
   </div>
 </div>
 <div class="row" *ngFor="let item of blerg">
-  <div class="col s6 offset-s1">
+  <div class="col s3 offset-s1">
     <a [attr.href]='item.html_url'>{{item.name}}</a>
+  </div>
+  <div *ngIf='item.description' class="col s7">
+    {{item.description}}
   </div>
 </div>
