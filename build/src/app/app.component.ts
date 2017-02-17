@@ -7,7 +7,6 @@ import {
   NavigationCancel,
   NavigationError
 } from '@angular/router';
-import {GithubService} from './services/github';
 declare var $:any;
 
 @Component({
@@ -16,13 +15,12 @@ declare var $:any;
 })
 export class AppComponent {
   loading: boolean = true;
-  link: string = '';
+  link: string = 'https://github.com/agraubert';
 
-  constructor(private gh: GithubService, router: Router) {
+  constructor(router: Router) {
     router.events.subscribe((event: RouterEvent) => {
       this.intercept(event);
     });
-    gh.getUrls().subscribe((response) => this.link = response.user_url.replace("{user}", 'agraubert'));
   }
 
   intercept(event: RouterEvent) {
@@ -34,6 +32,7 @@ export class AppComponent {
       $(".button-collapse").sideNav({
         closeOnClick: true
       });
+      $('.collapsible').collapsible();
     }
     if (event instanceof NavigationCancel) {
       this.loading = false;

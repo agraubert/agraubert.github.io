@@ -26,10 +26,6 @@ export class GithubService {
       .switch();
   }
 
-  getUrls() {
-    return this.urls;
-  }
-
   private makeRequest(url: string){
     console.log("FETCH: ", url);
     return this.http.get(url)

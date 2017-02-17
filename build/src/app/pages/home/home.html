@@ -20,11 +20,18 @@
     In the meantime, here are some of my GitHub repos:
   </div>
 </div>
-<div class="row" *ngFor="let item of blerg">
-  <div class="col s3 offset-s1">
-    <a [attr.href]='item.html_url'>{{item.name}}</a>
-  </div>
-  <div *ngIf='item.description' class="col s7">
-    {{item.description}}
+<div class="row">
+  <div class="col s10 offset-s1">
+    <ul class="collapsible popout" data-collapsible="accordion">
+      <li *ngFor="let item of blerg">
+        <div class="collapsible-header">{{item.name}}</div>
+        <div class="collapsible-body blue-grey lighten-5">
+          <a [attr.href]='item.html_url'>{{item.name}}</a>
+          <span *ngIf='item.description' >
+            --   {{item.description}}
+          </span>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
