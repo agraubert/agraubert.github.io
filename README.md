@@ -10,4 +10,5 @@ Using a custom pre-commit hook, I have webpack rebuild the js and add it so that
 ```bash
 echo "BUILDING..."
 npm run build --prefix build
-git add main.bundle.js```
+git add main.bundle.js
+```
