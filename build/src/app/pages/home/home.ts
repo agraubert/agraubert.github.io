@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {GithubService} from '../../services/github';
+import {Subscription} from 'rxjs/Subscription';
 import * as _ from 'lodash';
 declare var timeago:any;
+declare var $:any;
 
 @Component({
   selector: 'home',
@@ -10,6 +12,7 @@ declare var timeago:any;
 export class HomeComponent {
   blerg: any[];
   timeago: any;
+  subscription: Subscription;
 
   constructor(public gh: GithubService) {
     this.timeago = timeago;
@@ -17,7 +20,16 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.gh.getRepos()
-      .subscribe((repos) => this.blerg = _.chain(repos).sortBy('pushed_at').reverse().value());
+    $("#ghErrorModal").modal();
+    this.subscription = this.gh.getRepos()
+      .map((repos) => _.chain(repos).sortBy('pushed_at').reverse().value())
+      .subscribe(
+        (repos) => this.blerg = repos,
+        (error) => $("#ghErrorModal").modal('open')
+      );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

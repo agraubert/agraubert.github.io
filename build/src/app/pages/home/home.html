@@ -38,3 +38,19 @@
     </ul>
   </div>
 </div>
+
+<div id="ghErrorModal" class="modal">
+  <div class="modal-content">
+    <h4>GitHub API Error</h4>
+    <p>
+      Unfortunately, your browser has encountered an error with the GitHub API service.
+      This is most likely due to rate-limiting restrictions on the API, but the exact
+      error will be logged in your browser's console.  If this <strong>IS</strong>
+      a problem due to the rate-limiting system, it will be resolved
+      {{timeago().format(this.gh.getReset())}}, when the limits reset.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-blue btn-flat">OK</a>
+  </div>
+</div>
