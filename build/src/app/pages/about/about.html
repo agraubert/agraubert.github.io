@@ -1,5 +1,57 @@
 <div class="row">
   <div class="col s11 offset-s1">
-    This is a page!
+    <h5>Who?</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col s10 offset-s1">
+    <blockquote><!--Use a horizontal image card instead of the blockquote-->
+      I am Aaron Graubert, Computer Scientist and Bioinformatician
+    </blockquote>
+  </div>
+</div>
+<div class="row">
+  <div class="col s10 offset-s1">
+    I go by many usernames across the web, so here's how you can find me:
+  </div>
+</div>
+<div class="row">
+  <div class="col s10 offset-s1">
+    <div class="chip" *ngFor="let chip of chips">
+      <img *ngIf="chip.img_src" [attr.src]="chip.img_src" [attr.alt]="chip.img_alt">
+      <a [attr.href]="chip.href">{{chip.text}}</a>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="divider"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s11 offset-s1">
+    <h5>What?</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col s11 offset-s1">
+    This website serves as a central homepage for myself.  I'll probably come up
+    with a better description later, but this will do for now.
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="divider"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s11 offset-s1">
+    <h5>Why?</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col s11 offset-s1">
+    I figured I'd create a proper website finally, after having nothing to represent
+    myself with for so long
   </div>
 </div>
