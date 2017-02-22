@@ -106,15 +106,28 @@ export class GithubService {
       .do((res) => {
         //Check the github api requests remaining.  Used for error handling
         let remainder = +res.headers.get("X-RateLimit-Remaining");
-        let reset = +res.headers.get("X-RateLimit-Reset") * 1000;
+        let reset = +res.headers.get("X-RateLimit-Reset");
         console.log("GET: ", url, "  :", remainder);
         if(Date.now() >= this.resetAt)
         {
           this.requestsRemaining = remainder;
-          this.resetAt = reset;
+          this.resetAt = reset*1000;
         }
         else this.requestsRemaining = Math.min(remainder, this.requestsRemaining);
-      })
+      },
+      (error) => {
+        //Check the github api requests remaining.  Used for error handling
+        let remainder = +error.headers.get("X-RateLimit-Remaining");
+        let reset = +error.headers.get("X-RateLimit-Reset");
+        console.log("GET: ", url, "  :", remainder);
+        if(Date.now() >= this.resetAt)
+        {
+          this.requestsRemaining = remainder;
+          this.resetAt = reset*1000;
+        }
+        else this.requestsRemaining = Math.min(remainder, this.requestsRemaining);
+      }
+      )
       .map((res) => res.json());
   }
 }
