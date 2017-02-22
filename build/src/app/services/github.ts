@@ -11,6 +11,7 @@ import {Observable} from 'rxjs/Observable';
 export class GithubService {
   private urls: Observable<any>;
   private repos: Observable<any>;
+  private user: Observable<any>;
   private requestsRemaining = 0;
   private resetAt = 0;
 
@@ -18,18 +19,57 @@ export class GithubService {
     //having a fallback for the api rate would be really neat
     this.urls = this.makeRequest('https://api.github.com')
       //this line sets up the observable to cache itself after the first time it runs
-      .do((res) => this.urls = Observable.of(res).last());
+      //.do((res) => this.urls = Observable.of(res).last());
+      .do((res) => {
+        this.urls = Observable.of(res).last();
 
-    //Now setup the repos url observable from the urls observable
-    this.repos = this.urls
-      .map((response) => this.makeRequest( //map the response to a new request
-        response.user_repositories_url
-          .replace('{user}', 'agraubert')
-          .replace(/{\?.*?}/, '')
+        //Now setup the repos url observable from the urls observable
+        this.repos = this.urls
+          .map((response) => this.makeRequest( //map the response to a new request
+              response.user_repositories_url
+                .replace('{user}', 'agraubert')
+                .replace(/{\?.*?}/, '')
+            )
+            .do((res) => this.repos = Observable.of(res).last()) //cache after completion
+          )
+          .switch(); //Reduce the nested observable
+
+        this.user = this.urls
+          .map((response) => this.makeRequest(
+              response.user_url
+                .replace('{user}', 'agraubert')
+            )
+            .do((res) => this.user = Observable.of(res).last())
+        )
+        .switch();
+      });
+
+      //I don't like having to duplicate this.  It's probably easier to make
+      //an observable of an observable, but I can't think of a solution for that right now
+      this.repos = this.urls
+        .map((response) => this.makeRequest( //map the response to a new request
+            response.user_repositories_url
+              .replace('{user}', 'agraubert')
+              .replace(/{\?.*?}/, '')
+          )
+          .do((res) => this.repos = Observable.of(res).last()) //cache after completion
+        )
+        .switch(); //Reduce the nested observable
+
+      this.user = this.urls
+        .map((response) => this.makeRequest(
+            response.user_url
+              .replace('{user}', 'agraubert')
+          )
+          .do((res) => this.user = Observable.of(res).last())
       )
-        .do((res) => this.repos = Observable.of(res).last()) //cache after completion
-      )
-      .switch(); //Reduce the nested observable
+      .switch();
+
+
+  }
+
+  getUrls() {
+    return this.urls
   }
 
   getRemaining() {
@@ -38,6 +78,10 @@ export class GithubService {
 
   getReset() {
     return this.resetAt;
+  }
+
+  getUser() {
+    return this.user
   }
 
   getRepos() {

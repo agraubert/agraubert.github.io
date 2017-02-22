@@ -1,13 +1,17 @@
 <div class="row">
-  <div class="col s11 offset-s1">
+  <div class="col s10 offset-s1">
     <h5>Who?</h5>
   </div>
 </div>
 <div class="row">
-  <div class="col s10 offset-s1">
-    <blockquote><!--Use a horizontal image card instead of the blockquote-->
-      I am Aaron Graubert, Computer Scientist and Bioinformatician
-    </blockquote>
+  <div class="col s5 offset-s1">
+    <div class="card horizontal">
+      <div class="card-image">
+        <!--get a better dang image-->
+        <img [attr.src]="link" alt="">
+      </div>
+      <div class="card-content">I am Aaron Graubert, Computer Scientist and Bioinformatician</div>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -17,9 +21,10 @@
 </div>
 <div class="row">
   <div class="col s10 offset-s1">
-    <div class="chip" *ngFor="let chip of chips">
-      <img *ngIf="chip.img_src" [attr.src]="chip.img_src" [attr.alt]="chip.img_alt">
-      <a [attr.href]="chip.href">{{chip.text}}</a>
+    <div class="chip tooltipped" *ngFor="let chip of chips" data-position="bottom" data-delay="50" [attr.data-tooltip]="chip.img_alt">
+      <img *ngIf="chip.img_src" [attr.src]="chip.img_src"  [attr.alt]="chip.img_alt">
+      <a *ngIf="chip.href!=null" [attr.href]="chip.href">{{chip.text}}</a>
+      <span class="black-text" *ngIf="chip.href==null">{{chip.text}}</span>
     </div>
   </div>
 </div>
@@ -29,12 +34,12 @@
   </div>
 </div>
 <div class="row">
-  <div class="col s11 offset-s1">
+  <div class="col s10 offset-s1">
     <h5>What?</h5>
   </div>
 </div>
 <div class="row">
-  <div class="col s11 offset-s1">
+  <div class="col s10 offset-s1">
     This website serves as a central homepage for myself.  I'll probably come up
     with a better description later, but this will do for now.
   </div>
@@ -45,12 +50,12 @@
   </div>
 </div>
 <div class="row">
-  <div class="col s11 offset-s1">
+  <div class="col s10 offset-s1">
     <h5>Why?</h5>
   </div>
 </div>
 <div class="row">
-  <div class="col s11 offset-s1">
+  <div class="col s10 offset-s1">
     I figured I'd create a proper website finally, after having nothing to represent
     myself with for so long
   </div>

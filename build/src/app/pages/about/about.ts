@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {GithubService} from '../../services/github';
 
 class Chip {
   img_src: string;
@@ -20,8 +21,16 @@ class Chip {
 })
 export class AboutComponent {
   private chips: Chip[];
-  constructor() {
+  private link: string;
+  constructor(public gh: GithubService) {
+    this.gh.getUser().subscribe((response) => this.link = response.avatar_url);
     this.chips = [
+      new Chip(
+        "https://github.com/fluidicon.png",
+        'GitHub',
+        "https://github.com/agraubert",
+        'agraubert'
+      ),
       new Chip(
         "http://seeklogo.com/images/S/steam-logo-37A2862F0B-seeklogo.com.png",
         'Steam',
@@ -35,18 +44,25 @@ export class AboutComponent {
         'Jroot#1196'
       ),
       new Chip(
-        'http://mercadocripto.xyz/wp-content/uploads/2015/10/icon175x1751.png',
-        'Uplay',
-        '#/about',
+        'https://camo.githubusercontent.com/4b028e8e841f57ee96b472fa88ea7ed66ddd3720/687474703a2f2f692e696d6775722e636f6d2f65597779386c632e706e67',
+        'Discord',
+        null,
+        'Jroot#8988'
+      ),
+      new Chip(
+        'http://vignette3.wikia.nocookie.net/warframe/images/f/f9/Lotus_Icon.png/revision/latest?cb=20130923220134',
+        'Warframe',
+        null,
         'captianjroot'
       ),
       new Chip(
-        "https://github.com/fluidicon.png",
-        'GitHub',
-        "https://github.com/agraubert",
-        'agraubert'
-      )
+        'http://mercadocripto.xyz/wp-content/uploads/2015/10/icon175x1751.png',
+        'Uplay',
+        null,
+        'captianjroot'
+      ),
       //others?
     ];
   }
+
 }

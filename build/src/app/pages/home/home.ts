@@ -20,7 +20,6 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    $("#ghErrorModal").modal();
     this.subscription = this.gh.getRepos()
       .map((repos) => _.chain(repos).sortBy('pushed_at').reverse().value())
       .subscribe(
