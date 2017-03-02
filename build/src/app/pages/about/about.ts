@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {GithubService} from '../../services/github';
+import {SteamService} from '../../services/steam';
 
 class Chip {
   img_src: string;
@@ -22,8 +23,22 @@ class Chip {
 export class AboutComponent {
   private chips: Chip[];
   private link: string;
-  constructor(public gh: GithubService) {
-    this.gh.getUser().subscribe((response) => this.link = response.avatar_url);
+  private colorClass: string = '';
+  constructor(public gh: GithubService, private steam: SteamService) {
+    //this.gh.getUser().subscribe((response) => this.link = response.avatar_url);
+    this.steam.getPlayerData().subscribe((response) => {
+      this.link = response.avatarfull;
+      if (response.gameid !== undefined) {
+        this.colorClass = 'light-green';
+      }
+      else if (response.personastate == 1) {
+        this.colorClass = 'light-blue darken-1';
+      }
+      else {
+        this.colorClass = 'grey darken-2';
+      }
+      // console.log("Player:", response);
+    });
     this.chips = [
       new Chip(
         "https://github.com/fluidicon.png",

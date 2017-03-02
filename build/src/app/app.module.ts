@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home';
 import { AboutComponent } from './pages/about/about';
 
 import { GithubService } from './services/github';
+import { SteamService } from './services/steam';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { GithubService } from './services/github';
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [
-    GithubService
+    GithubService,
+    SteamService
   ],
   bootstrap: [ AppComponent ]
 })
