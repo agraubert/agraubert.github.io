@@ -1,5 +1,5 @@
 import { Injectable} from '@angular/core';
-import { Http} from '@angular/http';
+import { Http, RequestOptions, URLSearchParams, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/last';
 import 'rxjs/add/operator/switch';
@@ -14,10 +14,11 @@ export class GithubService {
   private user: Observable<any>;
   private requestsRemaining = 0;
   private resetAt = 0;
+  private urlRoot = 'https://api.github.com';
 
   constructor(private http: Http) {
     //having a fallback for the api rate would be really neat
-    this.urls = this.makeRequest('https://api.github.com')
+    this.urls = this.makeRequest('/')
       //this line sets up the observable to cache itself after the first time it runs
       //.do((res) => this.urls = Observable.of(res).last());
       .do((res) => {
@@ -29,6 +30,7 @@ export class GithubService {
               response.user_repositories_url
                 .replace('{user}', 'agraubert')
                 .replace(/{\?.*?}/, '')
+                .replace(this.urlRoot, '')
             )
             .do((res) => this.repos = Observable.of(res).last()) //cache after completion
           )
@@ -38,6 +40,7 @@ export class GithubService {
           .map((response) => this.makeRequest(
               response.user_url
                 .replace('{user}', 'agraubert')
+                .replace(this.urlRoot, '')
             )
             .do((res) => this.user = Observable.of(res).last())
         )
@@ -51,6 +54,7 @@ export class GithubService {
             response.user_repositories_url
               .replace('{user}', 'agraubert')
               .replace(/{\?.*?}/, '')
+              .replace(this.urlRoot, '')
           )
           .do((res) => this.repos = Observable.of(res).last()) //cache after completion
         )
@@ -60,6 +64,7 @@ export class GithubService {
         .map((response) => this.makeRequest(
             response.user_url
               .replace('{user}', 'agraubert')
+              .replace(this.urlRoot, '')
           )
           .do((res) => this.user = Observable.of(res).last())
       )
@@ -101,33 +106,28 @@ export class GithubService {
   //     .map((response) => response[0].message);
   // }
 
-  private makeRequest(url: string){
-    return this.http.get(url)
+  private makeRequest(resource: string){
+    let apiURL = 'https://1xao9d8kzk.execute-api.us-east-1.amazonaws.com/Production/api/github';
+    let params = new URLSearchParams();
+    params.set('resource', resource);
+    let headers = new Headers();
+    headers.append("content-type", "application/json");
+    let opts = new RequestOptions();
+    opts.search = params;
+    opts.headers = headers;
+    return this.http.get(apiURL, opts)
       .do((res) => {
         //Check the github api requests remaining.  Used for error handling
-        let remainder = +res.headers.get("X-RateLimit-Remaining");
-        let reset = +res.headers.get("X-RateLimit-Reset");
-        console.log("GET: ", url, "  :", remainder);
+        let remainder = +res.json().rateremaining;
+        let reset = +res.json().ratereset;
+        console.log("GET: ", resource, "  :", remainder);
         if(Date.now() >= this.resetAt)
         {
           this.requestsRemaining = remainder;
           this.resetAt = reset*1000;
         }
         else this.requestsRemaining = Math.min(remainder, this.requestsRemaining);
-      },
-      (error) => {
-        //Check the github api requests remaining.  Used for error handling
-        let remainder = +error.headers.get("X-RateLimit-Remaining");
-        let reset = +error.headers.get("X-RateLimit-Reset");
-        console.log("GET: ", url, "  :", remainder);
-        if(Date.now() >= this.resetAt)
-        {
-          this.requestsRemaining = remainder;
-          this.resetAt = reset*1000;
-        }
-        else this.requestsRemaining = Math.min(remainder, this.requestsRemaining);
-      }
-      )
-      .map((res) => res.json());
+      })
+      .map((res) => JSON.parse(res.json().result))
   }
 }

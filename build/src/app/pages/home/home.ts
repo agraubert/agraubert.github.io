@@ -24,7 +24,10 @@ export class HomeComponent {
       .map((repos) => _.chain(repos).sortBy('pushed_at').reverse().value())
       .subscribe(
         (repos) => this.blerg = repos,
-        (error) => $("#ghErrorModal").modal('open')
+        (error) => {
+          $("#ghErrorModal").modal('open');
+          console.log("Error was:", error);
+        }
       );
   }
 
