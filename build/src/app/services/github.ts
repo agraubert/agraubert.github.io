@@ -30,7 +30,6 @@ export class GithubService {
               response.user_repositories_url
                 .replace('{user}', 'agraubert')
                 .replace(/{\?.*?}/, '')
-                .replace(this.urlRoot, '')
             )
             .do((res) => this.repos = Observable.of(res).last()) //cache after completion
           )
@@ -40,7 +39,6 @@ export class GithubService {
           .map((response) => this.makeRequest(
               response.user_url
                 .replace('{user}', 'agraubert')
-                .replace(this.urlRoot, '')
             )
             .do((res) => this.user = Observable.of(res).last())
         )
@@ -54,7 +52,6 @@ export class GithubService {
             response.user_repositories_url
               .replace('{user}', 'agraubert')
               .replace(/{\?.*?}/, '')
-              .replace(this.urlRoot, '')
           )
           .do((res) => this.repos = Observable.of(res).last()) //cache after completion
         )
@@ -64,7 +61,6 @@ export class GithubService {
         .map((response) => this.makeRequest(
             response.user_url
               .replace('{user}', 'agraubert')
-              .replace(this.urlRoot, '')
           )
           .do((res) => this.user = Observable.of(res).last())
       )
@@ -120,7 +116,7 @@ export class GithubService {
         //Check the github api requests remaining.  Used for error handling
         let remainder = +res.json().rateremaining;
         let reset = +res.json().ratereset;
-        console.log("GET: ", resource, "  :", remainder);
+        console.log("GET: Github API (", resource, ")  :", remainder);
         if(Date.now() >= this.resetAt)
         {
           this.requestsRemaining = remainder;
@@ -128,6 +124,6 @@ export class GithubService {
         }
         else this.requestsRemaining = Math.min(remainder, this.requestsRemaining);
       })
-      .map((res) => JSON.parse(res.json().result))
+      .map((res) => JSON.parse(res.text().replace(/https:\/\/api\.github\.com/g, '')).result)
   }
 }

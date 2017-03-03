@@ -1,5 +1,5 @@
 import { Injectable} from '@angular/core';
-import { Http, RequestOptions, URLSearchParams, Headers} from '@angular/http';
+import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/last';
 import 'rxjs/add/operator/switch';
@@ -18,7 +18,7 @@ export class SteamService {
     this.playerData = this.http.get(apiURL)
       .map((res) => res.json())
       .do((res) => {
-        console.log("GET: ", apiURL);
+        console.log("GET: Steam API");
         this.playerData = Observable.of(res).last();
       })
   }
