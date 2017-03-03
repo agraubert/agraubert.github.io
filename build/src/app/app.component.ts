@@ -33,7 +33,7 @@ export class AppComponent {
         closeOnClick: true
       });
       $('.collapsible').collapsible();
-      $('.tooltipped').tooltip()
+      $('.tooltipped').tooltip();
       $("#ghErrorModal").modal();
     }
     if (event instanceof NavigationCancel) {
