@@ -49,37 +49,37 @@ export class AboutComponent {
     });
     this.chips = [
       new Chip(
-        "https://github.com/fluidicon.png",
+        'https://s3.amazonaws.com/jrsimgassets/github_logo.png',
         'GitHub',
         "https://github.com/agraubert",
         'agraubert'
       ),
       new Chip(
-        "http://seeklogo.com/images/S/steam-logo-37A2862F0B-seeklogo.com.png",
+        'https://s3.amazonaws.com/jrsimgassets/steam_logo.png',
         'Steam',
         'http://steamcommunity.com/id/captianjroot',
         'Jroot'
       ),
       new Chip(
-        'http://orig13.deviantart.net/7553/f/2013/231/2/9/battlenet_by_johnkict-d6ive6z.png',
+        'https://s3.amazonaws.com/jrsimgassets/battlenet_logo.png',
         'Battle.net',
         'http://masteroverwatch.com/profile/pc/us/Jroot-1196',
         'Jroot#1196'
       ),
       new Chip(
-        'https://camo.githubusercontent.com/4b028e8e841f57ee96b472fa88ea7ed66ddd3720/687474703a2f2f692e696d6775722e636f6d2f65597779386c632e706e67',
+        'https://s3.amazonaws.com/jrsimgassets/discord_logo.png',
         'Discord',
         null,
         'Jroot#8988'
       ),
       new Chip(
-        'http://vignette3.wikia.nocookie.net/warframe/images/f/f9/Lotus_Icon.png/revision/latest?cb=20130923220134',
+        'https://s3.amazonaws.com/jrsimgassets/warframe_logo.png',
         'Warframe',
         null,
         'captianjroot'
       ),
       new Chip(
-        'http://mercadocripto.xyz/wp-content/uploads/2015/10/icon175x1751.png',
+        'https://s3.amazonaws.com/jrsimgassets/uplay_logo.png',
         'Uplay',
         null,
         'captianjroot'
