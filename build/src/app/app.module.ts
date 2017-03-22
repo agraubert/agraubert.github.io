@@ -10,6 +10,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { HomeComponent } from './pages/home/home';
 import { AboutComponent } from './pages/about/about';
+import { WhiteoutComponent } from './pages/whiteout/whiteout';
 
 import { GithubService } from './services/github';
 import { SteamService } from './services/steam';
@@ -18,8 +19,8 @@ import { SteamService } from './services/steam';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
-
+    AboutComponent,
+    WhiteoutComponent
   ],
   imports: [
     BrowserModule,
