@@ -51,7 +51,7 @@ export class AboutComponent {
       new Chip(
         'https://s3.amazonaws.com/jrsimgassets/github_logo.png',
         'GitHub',
-        "https://github.com/agraubert",
+        'https://github.com/agraubert',
         'agraubert'
       ),
       new Chip(

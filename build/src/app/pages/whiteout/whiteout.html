@@ -13,9 +13,35 @@
   </div>
 </div>
 <div class="row">
+  <div class="col s10 offset-s1 valign-wrapper">
+    <i class="material-icons tiny left">new_releases</i>
+    The final build of Whiteout will be coming in the next two weeks
+  </div>
+</div>
+<div class="row">
+  <div class="col s10 offset-s1">
+    I have a long list of things that I'd like to have done by then, which I'll post here
+    in the near future and update as features are added:
+  </div>
+</div>
+<div class="row">
+  <div class="col s10 offset-s1">
+    <ul class="collection">
+      <li *ngFor="let item of entries" class="collection-item">
+        <div class="valign-wrapper">
+          <i class="material-icons small left">{{item.state?'done':'error_outline'}}</i>
+          {{item.body}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
   <div class="col s4 offset-s1">
     You can get the latest build of Whiteout here:
   </div>
   <a href="https://wustl.box.com/s/du2gc357wwkxkp4sacuvwojm340uhh05"
-    class="left waves-effect waves-light btn">Download Whiteout</a>
+    class="left waves-effect waves-light btn">
+    Download Whiteout
+  </a>
 </div>

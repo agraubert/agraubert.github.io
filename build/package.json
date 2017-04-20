@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --progress --optimize-minimize",
     "watch": "npm run build -- --watch",
-    "server": "webpack-dev-server --inline --progress --port 8080 --content-base src",
+    "server": "webpack-dev-server --inline --progress --port 4242 --content-base src",
     "prestart": "python -c \"import shutil; shutil.copyfile('../index.html', 'src/index.html')\"",
     "start": "npm run server"
   },
