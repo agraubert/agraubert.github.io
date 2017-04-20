@@ -3,74 +3,23 @@ import { Http, RequestOptions, URLSearchParams, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/last';
 import 'rxjs/add/operator/switch';
+import 'rxjs/add/operator/share';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 
 
 @Injectable()
 export class GithubService {
-  private urls: Observable<any>;
-  private repos: Observable<any>;
-  private user: Observable<any>;
+  private urls: Observable<any> = null;
+  private repos: Observable<any> = null;
+  private user: Observable<any> = null;
   private requestsRemaining = 0;
   private resetAt = 0;
   private urlRoot = 'https://api.github.com';
 
   constructor(private http: Http) {
     //having a fallback for the api rate would be really neat
-    this.urls = this.makeRequest('/')
-      //this line sets up the observable to cache itself after the first time it runs
-      //.do((res) => this.urls = Observable.of(res).last());
-      .do((res) => {
-        this.urls = Observable.of(res).last();
-
-        //Now setup the repos url observable from the urls observable
-        this.repos = this.urls
-          .map((response) => this.makeRequest( //map the response to a new request
-              response.user_repositories_url
-                .replace('{user}', 'agraubert')
-                .replace(/{\?.*?}/, '')
-            )
-            .do((res) => this.repos = Observable.of(res).last()) //cache after completion
-          )
-          .switch(); //Reduce the nested observable
-
-        this.user = this.urls
-          .map((response) => this.makeRequest(
-              response.user_url
-                .replace('{user}', 'agraubert')
-            )
-            .do((res) => this.user = Observable.of(res).last())
-        )
-        .switch();
-      });
-
-      //I don't like having to duplicate this.  It's probably easier to make
-      //an observable of an observable, but I can't think of a solution for that right now
-      this.repos = this.urls
-        .map((response) => this.makeRequest( //map the response to a new request
-            response.user_repositories_url
-              .replace('{user}', 'agraubert')
-              .replace(/{\?.*?}/, '')
-          )
-          .do((res) => this.repos = Observable.of(res).last()) //cache after completion
-        )
-        .switch(); //Reduce the nested observable
-
-      this.user = this.urls
-        .map((response) => this.makeRequest(
-            response.user_url
-              .replace('{user}', 'agraubert')
-          )
-          .do((res) => this.user = Observable.of(res).last())
-      )
-      .switch();
-
-
-  }
-
-  getUrls() {
-    return this.urls
+    //I've moved the observable caching into the individual methods
   }
 
   getRemaining() {
@@ -81,26 +30,42 @@ export class GithubService {
     return this.resetAt;
   }
 
-  getUser() {
-    return this.user
+  getUrls(): Observable<any> {
+    if(!this.urls) {
+      this.urls = this.makeRequest('/')
+        .do((response) => this.urls = Observable.of(response).last());
+    }
+    return this.urls;
   }
 
-  getRepos() {
-    //The old observable caching formula:
-    //this.repos.subscribe((response) => this.repos = Observable.of(response).last());
+  getUser(): Observable<any> {
+    if(!this.user) {
+      this.user = this.getUrls()
+        .map((response) => this.makeRequest(
+            response.user_url
+              .replace('{user}', 'agraubert')
+          )
+          .do((response) => this.user = Observable.of(response).last())
+        )
+        .switch();
+    }
+    return this.user;
+  }
+
+  getRepos(): Observable<any> {
+    if(!this.repos) {
+      this.repos = this.getUrls()
+        .map((response) => this.makeRequest(
+            response.user_repositories_url
+              .replace('{user}', 'agraubert')
+              .replace(/{\?.*?}/, '')
+          )
+          .do((response) => this.repos = Observable.of(response).last())
+        )
+        .switch();
+    }
     return this.repos;
   }
-
-  // getMessage(repo: string) {
-  //   return this.urls
-  //     .map((response) => this.makeRequest(
-  //       response.repository_url
-  //         .replace('{owner}', 'agraubert')
-  //         .replace('{repo}', repo) + "?per_page=1"
-  //     ))
-  //     .switch()
-  //     .map((response) => response[0].message);
-  // }
 
   private makeRequest(resource: string){
     let apiURL = 'https://1xao9d8kzk.execute-api.us-east-1.amazonaws.com/Production/api/github';

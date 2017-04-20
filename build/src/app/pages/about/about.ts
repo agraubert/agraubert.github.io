@@ -28,25 +28,6 @@ export class AboutComponent {
   private gamestring: string = '';
   constructor(public gh: GithubService, private steam: SteamService) {
     //this.gh.getUser().subscribe((response) => this.link = response.avatar_url);
-    this.steam.getPlayerData().subscribe((response) => {
-      this.link = response.avatarfull;
-      if (response.gameid !== undefined) {
-        //setTimeout is definitely not the best solution, but whatever
-        setTimeout(function(){$('.tooltipped').tooltip();}, 150);
-        this.colorClass = 'light-green tooltipped';
-        this.gamestring = "Playing: "+(
-          response.game_data.gameName.length?response.game_data.gameName:'a game on Steam'
-        );
-      }
-      else if (response.personastate == 0){
-        this.colorClass = 'grey darken-2';
-        this.gamestring = '';
-      }
-      else{
-        this.colorClass = 'light-blue darken-1';
-        this.gamestring = '';
-      }
-    });
     this.chips = [
       new Chip(
         'https://s3.amazonaws.com/jrsimgassets/github_logo.png',
@@ -86,6 +67,28 @@ export class AboutComponent {
       ),
       //others?
     ];
+  }
+
+  ngOnInit() {
+    this.steam.getPlayerData().subscribe((response) => {
+      this.link = response.avatarfull;
+      if (response.gameid !== undefined) {
+        //setTimeout is definitely not the best solution, but whatever
+        setTimeout(function(){$('.tooltipped').tooltip();}, 150);
+        this.colorClass = 'light-green tooltipped';
+        this.gamestring = "Playing: "+(
+          response.game_data.gameName.length?response.game_data.gameName:'a game on Steam'
+        );
+      }
+      else if (response.personastate == 0){
+        this.colorClass = 'grey darken-2';
+        this.gamestring = '';
+      }
+      else{
+        this.colorClass = 'light-blue darken-1';
+        this.gamestring = '';
+      }
+    });
   }
 
 }

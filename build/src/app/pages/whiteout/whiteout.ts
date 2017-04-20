@@ -9,6 +9,7 @@ class Entry {
     this.state = complete;
   }
 }
+
 @Component({
   selector: 'whiteout',
   templateUrl: './whiteout.html',
