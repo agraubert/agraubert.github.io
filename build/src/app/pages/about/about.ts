@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {GithubService} from '../../services/github';
 import {SteamService} from '../../services/steam';
 declare var $:any;
+import isString from 'lodash/isString';
+import isUndefined from 'lodash/isUndefined';
 
 class Chip {
   img_src: string;
@@ -72,12 +74,15 @@ export class AboutComponent {
   ngOnInit() {
     this.steam.getPlayerData().subscribe((response) => {
       this.link = response.avatarfull;
-      if (response.gameid !== undefined) {
+      if (!isUndefined(response.gameid)) {
         //setTimeout is definitely not the best solution, but whatever
         setTimeout(function(){$('.tooltipped').tooltip();}, 150);
         this.colorClass = 'light-green tooltipped';
         this.gamestring = "Playing: "+(
-          response.game_data.gameName.length?response.game_data.gameName:'a game on Steam'
+          //response.game_data.gameName.length?response.game_data.gameName:'a game on Steam'
+          isString(response.gameextrainfo)?response.gameextrainfo:(
+            response.game_data.gameName.length?response.game_data.gameName:'a game on Steam'
+          )
         );
       }
       else if (response.personastate == 0){
