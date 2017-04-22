@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {GithubService} from '../../services/github';
 import {SteamService} from '../../services/steam';
 declare var $:any;
-import isString from 'lodash/isString';
-import isUndefined from 'lodash/isUndefined';
+import {isString, isUndefined} from 'lodash';
 
 class Chip {
   img_src: string;
