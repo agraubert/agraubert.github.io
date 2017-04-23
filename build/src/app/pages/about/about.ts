@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {GithubService} from '../../services/github';
 import {SteamService} from '../../services/steam';
 declare var $:any;
-import {isString, isUndefined} from 'lodash';
+import {isString, isUndefined, bind} from 'lodash';
 
 class Chip {
   img_src: string;
@@ -27,6 +27,7 @@ export class AboutComponent {
   private link: string;
   private colorClass: string = '';
   private gamestring: string = '';
+
   constructor(public gh: GithubService, private steam: SteamService) {
     //this.gh.getUser().subscribe((response) => this.link = response.avatar_url);
     this.chips = [
@@ -71,7 +72,9 @@ export class AboutComponent {
   }
 
   ngOnInit() {
+    console.log("HEYO", this);
     this.steam.getPlayerData().subscribe((response) => {
+      setTimeout(bind(this.ngOnInit, this), 60000);
       this.link = response.avatarfull;
       if (!isUndefined(response.gameid)) {
         //setTimeout is definitely not the best solution, but whatever

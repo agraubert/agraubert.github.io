@@ -19,7 +19,7 @@ export class SteamService {
       .map((res) => res.json())
       .do((res) => {
         console.log("GET: Steam API");
-        this.playerData = Observable.of(res).last();
+        // this.playerData = Observable.of(res).last();
       })
   }
 
