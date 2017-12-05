@@ -10,6 +10,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { HomeComponent } from './pages/home/home';
 import { AboutComponent } from './pages/about/about';
+import { BeymaxComponent } from './pages/beymax/beymax';
 import { WhiteoutComponent } from './pages/whiteout/whiteout';
 
 import { GithubService } from './services/github';
@@ -20,6 +21,7 @@ import { SteamService } from './services/steam';
     AppComponent,
     HomeComponent,
     AboutComponent,
+    BeymaxComponent,
     WhiteoutComponent
   ],
   imports: [

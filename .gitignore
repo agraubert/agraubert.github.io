@@ -7,3 +7,4 @@ build/tsc
 build/tsserver
 build/webpack-dev-server
 build/typings/
+build/package-lock.json
