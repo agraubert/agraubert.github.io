@@ -20,6 +20,21 @@ export class BeymaxComponent {
   constructor() {
     this.features = [
       new Feature(
+        'Run Text Adventures',
+        'Dedicate a channel where Beymax will run Text Adventures (like Zork). \
+        Users bid to play during the next game session and the winner gets a \
+        2-day (extendable) session of their game of choice. Any input they type \
+        to the channel is forwarded to the game, and the game\'s responses are \
+        printed back in the channel for everyone to see'
+      ),
+      new Feature(
+        'Reward Economy',
+        'Beymax will reward users with Tokens and XP points for continuing to use \
+        your server and commands. XP is used to level up, which increases the \
+        Tokens awarded every week. Tokens are used to buy game sessions in text \
+        adventures'
+      ),
+      new Feature(
         'Create Polls',
         'Easily create a poll by sending a message. Beymax will create a poll in the channel \
         in the channel and add reactions to it so other members can vote easily. \
@@ -39,12 +54,6 @@ export class BeymaxComponent {
         done, or Beymax will automatically delete it in 24 hours. This feature \
         allows users without permissions to create channels directly to have a \
         place to group up for a game without clogging pre-existing channels'
-      ),
-      new Feature(
-        'Customizable Help System',
-        'Beymax boasts a fully customizable natural language help system. Users \
-        can start a direct message with Beymax either manually or with a simple \
-        command, and get their questions answered via a conversational help session'
       ),
       new Feature(
         'Birthday Notifications',
