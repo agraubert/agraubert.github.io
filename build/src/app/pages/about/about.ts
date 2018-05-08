@@ -52,7 +52,7 @@ export class AboutComponent {
         'https://s3.amazonaws.com/jrsimgassets/discord_logo.png',
         'Discord',
         null,
-        'Jroot#8988'
+        'Jroot#8888'
       ),
       new Chip(
         'https://s3.amazonaws.com/jrsimgassets/warframe_logo.png',
@@ -71,6 +71,8 @@ export class AboutComponent {
   }
 
   ngOnInit() {
+    //setTimeout is definitely not the best solution, but whatever
+    setTimeout(function(){$('.tooltipped').tooltip();}, 250);
     this.steam.getPlayerData().subscribe((response) => {
       this.link = response.avatarfull;
       if (!isUndefined(response.gameid)) {
