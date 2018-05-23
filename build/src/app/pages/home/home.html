@@ -31,7 +31,7 @@
       <li *ngFor="let item of blerg">
         <div class="collapsible-header">
           <span class="left">{{item.name}}</span>
-          <span class="hide-on-small-only right grey-text" style="font-size: .8em">(Last updated {{timeago().format(item.pushed_at)}})</span>
+          <span class="hide-on-small-only col s6 right-align grey-text" style="font-size: .8em">(Last updated {{timeago().format(item.pushed_at)}})</span>
         </div>
         <div class="collapsible-body blue-grey lighten-5">
           <a [attr.href]="item.html_url">{{item.name}}</a>
