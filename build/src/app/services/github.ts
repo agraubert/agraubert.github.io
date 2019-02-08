@@ -68,7 +68,7 @@ export class GithubService {
   }
 
   private makeRequest(resource: string){
-    let apiURL = 'https://1xao9d8kzk.execute-api.us-east-1.amazonaws.com/Production/api/github';
+    let apiURL = 'https://us-central1-a-graubert.cloudfunctions.net/github';
     let params = new URLSearchParams();
     params.set('resource', resource);
     let headers = new Headers();

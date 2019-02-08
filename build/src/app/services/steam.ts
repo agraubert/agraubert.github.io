@@ -13,7 +13,7 @@ export class SteamService {
   private playerData: Observable<any>;
 
   constructor(private http: Http) {
-    let apiURL = "https://1xao9d8kzk.execute-api.us-east-1.amazonaws.com/Production/api/steam";
+    let apiURL = "https://us-central1-a-graubert.cloudfunctions.net/steam";
 
     this.playerData = this.http.get(apiURL)
       .map((res) => res.json())
