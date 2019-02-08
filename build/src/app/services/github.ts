@@ -71,11 +71,8 @@ export class GithubService {
     let apiURL = 'https://us-central1-a-graubert.cloudfunctions.net/github';
     let params = new URLSearchParams();
     params.set('resource', resource);
-    let headers = new Headers();
-    headers.append("content-type", "application/json");
     let opts = new RequestOptions();
     opts.search = params;
-    opts.headers = headers;
     return this.http.get(apiURL, opts)
       .do((res) => {
         //Check the github api requests remaining.  Used for error handling
