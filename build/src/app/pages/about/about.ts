@@ -37,6 +37,12 @@ export class AboutComponent {
         'agraubert'
       ),
       new Chip(
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu0bg05LaEcatAQseXaxHZjfVksIM6isMAn1NlSPwBD97mtEOx&s',
+        'ORCID',
+        'https://orcid.org/0000-0001-5539-034X',
+        'Aaron Graubert'
+      ),
+      new Chip(
         'https://s3.amazonaws.com/jrsimgassets/steam_logo.png',
         'Steam',
         'http://steamcommunity.com/id/captianjroot',
