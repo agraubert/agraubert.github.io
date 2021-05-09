@@ -32,7 +32,7 @@
     "bootstrap": "~3.4.1",
     "core-js": "^2.6.4",
     "ie-shim": "^0.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^5.5.12",
     "zone.js": "^0.8.29"
