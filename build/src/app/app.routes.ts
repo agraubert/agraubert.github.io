@@ -8,8 +8,8 @@ export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'beymax', component: BeymaxComponent },
-  { path: 'whiteout', component: WhiteoutComponent }
+  // { path: 'beymax', component: BeymaxComponent },
+  // { path: 'whiteout', component: WhiteoutComponent }
   // { path: 'github', component: RepoBrowserComponent,
   //   children: [
   //     { path: '', component: RepoListComponent },
